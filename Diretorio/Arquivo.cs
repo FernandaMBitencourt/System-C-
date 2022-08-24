@@ -10,7 +10,7 @@ namespace Diretorio
     internal class Arquivo
     {
 
-        private static string caminhoArquivo() => ConfigurationManager.AppSettings["caminho_arquivos"];
+        private static string caminhoArquivo() => ConfigurationManager.AppSettings["PathFile"];
         public static void Ler(int numeroArquivo)
         {
             string arquivoComCaminho = caminhoArquivo() + "arq" + numeroArquivo + ".txt";

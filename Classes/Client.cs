@@ -9,17 +9,47 @@ namespace Classes
 {
     public class Client
     {
-        public string Name;
-        public string Phone;
-        public string CPF;
+        /// <summary>
+        /// Constructor of classe
+        /// </summary>
+        /// <param name="name">To fill in the object name </param>
+        public Client(string name)
+        {
+            this.Name = name;
+
+        }
+
+
+        public Client(string phone)
+        {
+            this.Phone = phone;
+        }
+
+        /// <summary>
+        /// Constructor without params
+        /// </summary>
+        public Client()
+        {
+
+        }
+
+        public static string Test;
+
+
+        public string? Name;
+        public string? Phone;
+        public string? CPF;
 
         public void Record()
         {
             //Implementar
         }
 
-        
-        private static string caminhoBaseClient() => ConfigurationManager.AppSettings["BaseOfClients"];
+
+        private static string caminhoBaseClient()
+        {
+            return ConfigurationManager.AppSettings["BaseOfClients"];
+        }
 
         public static List<Client> ReadClientes()
         {
@@ -33,7 +63,7 @@ namespace Classes
                     while ((linha = arquivo.ReadLine()) != null)
                     {
                         i++;
-                        if(i == 0) continue;
+                        if(i == 1) continue;
                         var clientFile = linha.Split(';');
 
                         var client = new Client();
@@ -46,7 +76,6 @@ namespace Classes
                     }
                 }
             }
-
             return clients;
         }
     }
