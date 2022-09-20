@@ -21,14 +21,21 @@ namespace console_app2
             Client.Test = "ssss";
 
             var client = new Client();
-            client.Name = "Danilo";
+            client.Name = "Geraldo";
             client.Phone = "55646456456";
             client.CPF = "554545454564";
             client.Record();
 
-            Client c = new Client();
+            //Client c = new Client();
 
-            var l = new List<String>();
+            var clientes = Client.ReadClientes();
+            foreach(Client c in clients)
+            {
+                Console.WriteLine(c.Name);
+            }
+            Console.ReadLine();
+
+            //var l = new List<String>();
 
             /*
             var client2 = new Client();

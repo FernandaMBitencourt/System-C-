@@ -10,19 +10,21 @@ namespace Classes
     public class Client
     {
         /// <summary>
-        /// Constructor of classe
+        /// Constructor eith three params 
         /// </summary>
         /// <param name="name">To fill in the object name </param>
-        public Client(string name)
+        /// <param name="phone"></param>
+        /// <param name="cpf"></param>
+        public Client(string name, string phone, string cpf)
         {
             this.Name = name;
 
         }
 
 
-        public Client(string phone)
+        public Client(int phone)
         {
-            this.Phone = phone;
+            this.Phone = phone.ToString();
         }
 
         /// <summary>
@@ -42,7 +44,21 @@ namespace Classes
 
         public void Record()
         {
-            //Implementar
+            var clientes = Client.ReadClientes();
+            clientes.Add(this);
+            if (File.Exists(caminhoBaseClient()))
+            {
+                StreamWriter r = new StreamWriter(caminhoBaseClient());
+                string content = "nome;telefone;cpf;";
+                r.WriteLine(content);
+                foreach (Client c in clientes)
+                {
+                   var linha = c.Name + ";" + c.Phone + ";" + c.CPF + ";";
+                    r.WriteLine(linha);
+                }
+
+                r.Close();
+            }
         }
 
 
